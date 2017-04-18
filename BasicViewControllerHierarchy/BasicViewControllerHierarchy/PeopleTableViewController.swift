@@ -149,7 +149,8 @@ class PeopleTableViewController: UITableViewController, NSFetchedResultsControll
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let personDetailViewController = segue.destination as? PersonDetailViewController
+        if let destinationNavC = segue.destination as? UINavigationController
+            , let personDetailViewController = destinationNavC.viewControllers.first as? PersonDetailViewController
             , let indexPath = tableView.indexPathForSelectedRow {
             
             if let person = fetchedResultsController?.object(at: indexPath) as? Person {

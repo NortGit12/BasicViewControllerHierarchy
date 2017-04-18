@@ -12,7 +12,7 @@ protocol PersonListUpdatedDelegate {
     
 }
 
-class PersonDetailViewController: UIViewController {
+class PersonDetailViewController: UIViewController, UIImagePickerControllerDelegate {
     
     //==================================================
     // MARK: - _Properties
@@ -21,20 +21,29 @@ class PersonDetailViewController: UIViewController {
     // Model
     var person: Person?
     
+    // Misc
+    var imagePicker = UIImagePickerController()
+    
     // Outlets
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
-    @IBOutlet weak var personImageView: UIImageView!
     @IBOutlet weak var notesTextView: UITextView!
+    @IBOutlet weak var personImageView: UIImageView!
+    @IBOutlet weak var selectImageButton: UIButton!
     
     //==================================================
     // MARK: - Actions
     //==================================================
     
-    @IBAction func saveBarButtonItemTapped(_ sender: UIButton) {
+    @IBAction func cancelBarButtonItemTapped(_ sender: UIBarButtonItem) {
         
-        guard let firstName = firstNameTextField.text, firstName.characters.count > 0,
-            let lastName = lastNameTextField.text, lastName.characters.count > 0
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func saveBarButtonItemTapped(_ sender: UIBarButtonItem) {
+        
+        guard let firstName = firstNameTextField.text, firstName.characters.count > 0
+            , let lastName = lastNameTextField.text, lastName.characters.count > 0
         else {
             let insufficientInfoAlertController = UIAlertController(title: "Missing"
                 , message: "Required info missing.  Fill in all fields and try again."
@@ -45,10 +54,34 @@ class PersonDetailViewController: UIViewController {
             return
         }
         
-        PersonController.createPerson(firstName: firstName
-            , lastName: lastName
-            , notes: notesTextView.text)
+        var imageData: NSData? = nil
+        if let personImage = personImageView.image {
+            imageData = UIImagePNGRepresentation(personImage) as NSData?
+        }
+        
+        var notes: String? = nil
+        if let notesText = notesTextView.text, notesText.characters.count > 0 {
+            notes = notesText
+        }
+        
+        if let person = person {
+            
+            PersonController.updatePerson(person, firstName: firstName, lastName: lastName, imageData: imageData, notes: notes)
+            
+        } else {
+            
+            PersonController.createPerson(firstName: firstName
+                , lastName: lastName
+                , imageData: imageData
+                , notes: notesTextView.text)
+        }
+        
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func selectImageButtonTapped(_ sender: UIButton) {
+        
+        print("Select Image button tapped")
     }
     
     //==================================================

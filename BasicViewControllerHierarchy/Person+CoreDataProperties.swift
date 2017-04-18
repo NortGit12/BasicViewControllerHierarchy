@@ -17,6 +17,8 @@ extension Person {
     }
 
     @NSManaged public var firstName: String
+    @NSManaged public var id: String
+    @NSManaged public var imageData: NSData?
     @NSManaged public var lastName: String
     @NSManaged public var notes: String?
 

@@ -23,6 +23,7 @@ public class Person: NSManagedObject {
     
     convenience init?(firstName: String
         , lastName: String
+        , imageData: NSData? = nil
         , notes: String? = nil
         , context: NSManagedObjectContext = PersonController.moc) {
         
@@ -33,6 +34,8 @@ public class Person: NSManagedObject {
         // Identify the context we want to put the "Song" Entity in
         self.init(entity: entity, insertInto: context)
         
+        self.id = NSUUID().uuidString
+        self.imageData = imageData
         self.firstName = firstName
         self.lastName = lastName
         self.notes = notes

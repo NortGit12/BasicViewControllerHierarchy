@@ -60,7 +60,7 @@
         <scene sceneID="j5T-bD-E2W">
             <objects>
                 <collectionViewController id="8A9-8Z-RwZ" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="sfa-JR-JCL">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="sfa-JR-JCL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -220,7 +220,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="heM-L8-Uis">
-                                <rect key="frame" x="50" y="224" width="275" height="120"/>
+                                <rect key="frame" x="50" y="444" width="275" height="120"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="AKh-A9-4ri"/>
@@ -228,11 +228,33 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YMF-oA-eQ8">
+                                <rect key="frame" x="87" y="214" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Voa-mU-AsY"/>
+                                    <constraint firstAttribute="width" constant="200" id="dan-Lc-7rX"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mif-2v-cnj">
+                                <rect key="frame" x="87" y="214" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="A1h-0l-6kJ"/>
+                                    <constraint firstAttribute="height" constant="200" id="DYe-va-dik"/>
+                                </constraints>
+                                <state key="normal" title="Select image">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectImageButtonTapped:" destination="XL7-qG-Zvb" eventType="touchUpInside" id="qA7-iS-jmo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="YMF-oA-eQ8" firstAttribute="top" secondItem="YcE-iB-KEy" secondAttribute="bottom" constant="30" id="GMB-zy-y00"/>
                             <constraint firstItem="YcE-iB-KEy" firstAttribute="top" secondItem="0rS-fh-VGH" secondAttribute="bottom" constant="20" id="I8n-DA-rmn"/>
                             <constraint firstAttribute="trailing" secondItem="YcE-iB-KEy" secondAttribute="trailing" constant="10" id="KlR-nM-7o3"/>
+                            <constraint firstItem="mif-2v-cnj" firstAttribute="centerX" secondItem="QCO-vI-uEk" secondAttribute="centerX" id="LQB-Gd-Npb"/>
                             <constraint firstAttribute="trailing" secondItem="0rS-fh-VGH" secondAttribute="trailing" constant="10" id="LvT-lE-krC"/>
                             <constraint firstItem="heM-L8-Uis" firstAttribute="centerX" secondItem="QCO-vI-uEk" secondAttribute="centerX" id="Qjb-p6-Hbc"/>
                             <constraint firstItem="YcE-iB-KEy" firstAttribute="leading" secondItem="QCO-vI-uEk" secondAttribute="leading" constant="10" id="Vfw-YK-Ole"/>
@@ -240,10 +262,17 @@
                             <constraint firstItem="0rS-fh-VGH" firstAttribute="leading" secondItem="QCO-vI-uEk" secondAttribute="leading" constant="10" id="gpe-TX-K6a"/>
                             <constraint firstAttribute="trailing" secondItem="heM-L8-Uis" secondAttribute="trailing" constant="50" id="mb8-71-bLh"/>
                             <constraint firstItem="0rS-fh-VGH" firstAttribute="top" secondItem="Jlb-vH-sE5" secondAttribute="bottom" constant="40" id="oZ5-Lu-9rG"/>
-                            <constraint firstItem="heM-L8-Uis" firstAttribute="top" secondItem="YcE-iB-KEy" secondAttribute="bottom" constant="40" id="wCV-gC-Ghy"/>
+                            <constraint firstItem="mif-2v-cnj" firstAttribute="top" secondItem="YcE-iB-KEy" secondAttribute="bottom" constant="30" id="t00-Gl-9dT"/>
+                            <constraint firstItem="YMF-oA-eQ8" firstAttribute="centerX" secondItem="QCO-vI-uEk" secondAttribute="centerX" id="wBW-0b-DYz"/>
+                            <constraint firstItem="heM-L8-Uis" firstAttribute="top" secondItem="YMF-oA-eQ8" secondAttribute="bottom" constant="30" id="xBz-7b-vTQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="w5X-Xa-Yt4">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0Iq-hd-Egz">
+                            <connections>
+                                <action selector="cancelBarButtonItemTapped:" destination="XL7-qG-Zvb" id="U4p-bt-EqP"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="odW-at-OVN">
                             <connections>
                                 <action selector="saveBarButtonItemTapped:" destination="XL7-qG-Zvb" id="LJC-pn-051"/>
@@ -254,6 +283,8 @@
                         <outlet property="firstNameTextField" destination="0rS-fh-VGH" id="Tf4-Yj-Pc4"/>
                         <outlet property="lastNameTextField" destination="YcE-iB-KEy" id="apE-OS-GbX"/>
                         <outlet property="notesTextView" destination="heM-L8-Uis" id="GyK-5m-BNK"/>
+                        <outlet property="personImageView" destination="YMF-oA-eQ8" id="CRX-Em-AZM"/>
+                        <outlet property="selectImageButton" destination="mif-2v-cnj" id="IOA-nR-gEe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bsz-0Z-E1B" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -323,6 +354,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="9pb-Jd-gfE" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="LrM-Mq-MMf">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
@@ -339,6 +371,7 @@
         <!--Navigation Controller-->
         <scene sceneID="881-cK-RTB">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ulq-p9-OFj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="t0h-9a-Rj8" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="czF-8l-aJz">
@@ -350,7 +383,6 @@
                         <segue destination="XL7-qG-Zvb" kind="relationship" relationship="rootViewController" id="RbF-2p-Xu6"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ulq-p9-OFj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3383.1999999999998" y="-520.38980509745136"/>
         </scene>

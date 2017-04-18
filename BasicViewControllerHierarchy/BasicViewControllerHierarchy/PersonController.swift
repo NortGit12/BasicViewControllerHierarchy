@@ -20,15 +20,25 @@ public class PersonController {
     // MARK: - Methods
     //==================================================
     
-    static func createPerson(firstName: String, lastName: String, notes: String? = nil) {
+    static func createPerson(firstName: String, lastName: String, imageData: NSData? = nil, notes: String? = nil) {
         
-        let _ = Person(firstName: firstName, lastName: lastName, notes: notes)
+        let _ = Person(firstName: firstName, lastName: lastName, imageData: imageData, notes: notes)
         PersonController.saveContext()
     }
     
     static func deletePerson(_ person: Person) {
         
         PersonController.moc.delete(person)
+        PersonController.saveContext()
+    }
+    
+    static func updatePerson(_ person: Person, firstName: String, lastName: String, imageData: NSData? = nil, notes: String? = nil) {
+        
+        person.firstName = firstName
+        person.lastName = lastName
+        person.imageData = imageData
+        person.notes = notes
+        
         PersonController.saveContext()
     }
     
