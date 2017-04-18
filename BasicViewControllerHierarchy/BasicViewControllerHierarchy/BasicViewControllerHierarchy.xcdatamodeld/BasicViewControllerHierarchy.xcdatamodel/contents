@@ -7,17 +7,7 @@
         <attribute name="lastName" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Planet" representedClassName=".Planet" syncable="YES">
-        <attribute name="distancefromSunInMillionsofKMs" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="imageData" attributeType="Binary" syncable="YES"/>
-        <attribute name="name" attributeType="String" syncable="YES"/>
-        <attribute name="revolutionPeriodDurationInDays" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="rotationPeriodDurationInDays" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="sequenceID" attributeType="Integer 16" minValueString="1" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="symbolData" attributeType="Binary" syncable="YES"/>
-    </entity>
     <elements>
         <element name="Person" positionX="-63" positionY="-18" width="128" height="120"/>
-        <element name="Planet" positionX="-63" positionY="18" width="128" height="150"/>
     </elements>
 </model>

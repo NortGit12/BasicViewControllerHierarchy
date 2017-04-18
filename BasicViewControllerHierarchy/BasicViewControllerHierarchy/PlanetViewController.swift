@@ -14,16 +14,13 @@ class PlanetViewController: UIViewController {
     // MARK: - _Properties
     //==================================================
     
-    // Misc
+    @IBOutlet weak var distanceFromSunLabel: UILabel!
+    @IBOutlet weak var lengthOfYearLabel: UILabel!
     var planet: Planet? {
         didSet {
             updateViews()
         }
     }
-    
-    // Outlets
-    @IBOutlet weak var distanceFromSunLabel: UILabel!
-    @IBOutlet weak var lengthOfYearLabel: UILabel!
     @IBOutlet weak var planetImageView: UIImageView!
     @IBOutlet weak var planetNameLabel: UILabel!
     @IBOutlet weak var planetSymbolImageView: UIImageView!
@@ -31,6 +28,12 @@ class PlanetViewController: UIViewController {
     //==================================================
     // MARK: - General
     //==================================================
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -50,9 +53,9 @@ class PlanetViewController: UIViewController {
                 
                 distanceFromSunLabel.text = "\(planet.distancefromSunInMillionsofKMs)"
                 lengthOfYearLabel.text = "\(planet.revolutionPeriodDurationInDays) days"
-                planetImageView.image = UIImage(data: planet.imageData as Data)
+                planetImageView.image = UIImage(named: planet.image)
                 planetNameLabel.text = planet.name
-                planetSymbolImageView.image = UIImage(data: planet.symbolData as Data)
+                planetSymbolImageView.image = UIImage(named: planet.symbolImage)
             }
         }
     }

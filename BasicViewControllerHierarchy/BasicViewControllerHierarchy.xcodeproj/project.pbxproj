@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F47AB261EA684FF00029D69 /* Planet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F47AB241EA684FF00029D69 /* Planet+CoreDataClass.swift */; };
-		1F47AB271EA684FF00029D69 /* Planet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F47AB251EA684FF00029D69 /* Planet+CoreDataProperties.swift */; };
 		1F47AB2D1EA6864900029D69 /* PlanetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F47AB2C1EA6864900029D69 /* PlanetController.swift */; };
 		1F47AB2F1EA68AEE00029D69 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F47AB2E1EA68AEE00029D69 /* PersistenceController.swift */; };
 		1F47AB311EA6980000029D69 /* PlanetsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F47AB301EA6980000029D69 /* PlanetsPageViewController.swift */; };
 		1F47AB331EA6A5BE00029D69 /* PlanetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F47AB321EA6A5BE00029D69 /* PlanetViewController.swift */; };
+		1F47AB351EA6B2A000029D69 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F47AB341EA6B2A000029D69 /* Planet.swift */; };
 		1F97B3771EA52E03009AD63A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F97B3761EA52E03009AD63A /* AppDelegate.swift */; };
 		1F97B37C1EA52E03009AD63A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F97B37A1EA52E03009AD63A /* Main.storyboard */; };
 		1F97B37F1EA52E03009AD63A /* BasicViewControllerHierarchy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F97B37D1EA52E03009AD63A /* BasicViewControllerHierarchy.xcdatamodeld */; };
@@ -45,12 +44,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1F47AB241EA684FF00029D69 /* Planet+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Planet+CoreDataClass.swift"; path = "../Planet+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1F47AB251EA684FF00029D69 /* Planet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Planet+CoreDataProperties.swift"; path = "../Planet+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1F47AB2C1EA6864900029D69 /* PlanetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetController.swift; sourceTree = "<group>"; };
 		1F47AB2E1EA68AEE00029D69 /* PersistenceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		1F47AB301EA6980000029D69 /* PlanetsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetsPageViewController.swift; sourceTree = "<group>"; };
 		1F47AB321EA6A5BE00029D69 /* PlanetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetViewController.swift; sourceTree = "<group>"; };
+		1F47AB341EA6B2A000029D69 /* Planet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		1F97B3731EA52E03009AD63A /* BasicViewControllerHierarchy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasicViewControllerHierarchy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F97B3761EA52E03009AD63A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F97B37B1EA52E03009AD63A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -109,8 +107,7 @@
 		1F47AB291EA6851F00029D69 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1F47AB241EA684FF00029D69 /* Planet+CoreDataClass.swift */,
-				1F47AB251EA684FF00029D69 /* Planet+CoreDataProperties.swift */,
+				1F47AB341EA6B2A000029D69 /* Planet.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -371,13 +368,12 @@
 				1F47AB311EA6980000029D69 /* PlanetsPageViewController.swift in Sources */,
 				1F97B3B81EA55995009AD63A /* Person+CoreDataProperties.swift in Sources */,
 				1F97B3BC1EA55D6B009AD63A /* PersonController.swift in Sources */,
-				1F47AB271EA684FF00029D69 /* Planet+CoreDataProperties.swift in Sources */,
 				1F47AB2F1EA68AEE00029D69 /* PersistenceController.swift in Sources */,
 				1F97B3BF1EA56669009AD63A /* PersonDetailViewController.swift in Sources */,
 				1F97B3B71EA55995009AD63A /* Person+CoreDataClass.swift in Sources */,
-				1F47AB261EA684FF00029D69 /* Planet+CoreDataClass.swift in Sources */,
 				1F47AB331EA6A5BE00029D69 /* PlanetViewController.swift in Sources */,
 				1F97B3A91EA5567D009AD63A /* PeopleTableViewController.swift in Sources */,
+				1F47AB351EA6B2A000029D69 /* Planet.swift in Sources */,
 				1F97B37F1EA52E03009AD63A /* BasicViewControllerHierarchy.xcdatamodeld in Sources */,
 				1F47AB2D1EA6864900029D69 /* PlanetController.swift in Sources */,
 			);

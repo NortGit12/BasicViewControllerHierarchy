@@ -15,11 +15,11 @@ class PlanetsPageViewController: UIPageViewController, NSFetchedResultsControlle
     // MARK: - _Properties
     //==================================================
     
-    var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>?
     var orderedViewControllers = [UIViewController]()
+    var pageControl = UIPageControl()
     
     //==================================================
-    // MARK: - General
+    // MARK: - View Lifecycle
     //==================================================
     
     override func viewDidLoad() {
@@ -28,15 +28,13 @@ class PlanetsPageViewController: UIPageViewController, NSFetchedResultsControlle
         // Assign this instance as the UIPageViewControllerDataSource's data source
         dataSource = self
         
-        initializeFetchedResultsController()
-        
-//        // Create the view controller instances
-//        for planet in PlanetController.shared.planets {
-//            
-//            let PlanetViewController = createNewViewControllerForPlanet(planet)
-//            
-//            orderedViewControllers.append(PlanetViewController)
-//        }
+        // Create the view controller instances
+        for planet in PlanetController.shared.planets {
+            
+            let PlanetViewController = createNewViewControllerForPlanet(planet)
+            
+            orderedViewControllers.append(PlanetViewController)
+        }
         
         if let firstPlanetViewController = orderedViewControllers.first {
             
@@ -57,27 +55,6 @@ class PlanetsPageViewController: UIPageViewController, NSFetchedResultsControlle
         return PlanetViewController
     }
     
-    func initializeFetchedResultsController() {
-        
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Planet")
-        request.sortDescriptors = [NSSortDescriptor(key: "sequenceID", ascending: true)]
-        
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: request
-            , managedObjectContext: PersistenceController.moc, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultsController?.delegate = self
-        
-        refreshFetchedResults()
-    }
-    
-    func refreshFetchedResults() {
-        
-        do {
-            try fetchedResultsController?.performFetch()
-        } catch let error as NSError {
-            NSLog("Error fetching planets: \(error.localizedDescription)")
-        }
-    }
-    
     func viewControllerAtIndex(_ index: Int) -> PlanetViewController? {
         
         if (orderedViewControllers.count == 0) || (index >= orderedViewControllers.count) {
@@ -87,8 +64,7 @@ class PlanetsPageViewController: UIPageViewController, NSFetchedResultsControlle
         }
         
         let PlanetViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PlanetViewController") as! PlanetViewController
-//        PlanetViewController.planet = PlanetController.shared.planets[index]
-        PlanetViewController.planet = fetchedResultsController?.fetchedObjects?[index] as? Planet
+        PlanetViewController.planet = PlanetController.shared.planets[index]
         
         return PlanetViewController
     }
@@ -101,15 +77,14 @@ class PlanetsPageViewController: UIPageViewController, NSFetchedResultsControlle
             return nil
         }
         
-//        let index = PlanetController.shared.planets.index(where: {$0 == planet})  // This required the model to conform to the Equatable protocol
+        let index = PlanetController.shared.planets.index(where: {$0 == planet})  // This required the model to conform to the Equatable protocol
         
-        return Int(planet.sequenceID)
+        return index
     }
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
         
-//        return PlanetController.shared.planets.count
-        return fetchedResultsController?.fetchedObjects?.count ?? 0
+        return PlanetController.shared.planets.count
     }
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
@@ -152,7 +127,6 @@ extension PlanetsPageViewController: UIPageViewControllerDataSource {
         
         return viewControllerAtIndex(afterIndex)
     }
-
 }
 
 
