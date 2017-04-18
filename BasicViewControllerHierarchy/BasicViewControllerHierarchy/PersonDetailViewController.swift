@@ -12,16 +12,20 @@ protocol PersonListUpdatedDelegate {
     
 }
 
-class PersonDetailViewController: UIViewController, UIImagePickerControllerDelegate {
+class PersonDetailViewController: UIViewController {
     
     //==================================================
     // MARK: - _Properties
     //==================================================
     
+    // Dispatch Queues
+//    let saveQueue = dispatch_queue_create("saveQueue", DISPATCH_QUEUE_PRIORITY_BACKGROUND)
+    
     // Model
     var person: Person?
     
     // Misc
+    var image: UIImage?
     var imagePicker = UIImagePickerController()
     
     // Outlets
@@ -40,6 +44,11 @@ class PersonDetailViewController: UIViewController, UIImagePickerControllerDeleg
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func deleteImageButtonTapped(_ sender: UIButton) {
+        self.image = nil
+        personImageView.image = nil
+    }
+    
     @IBAction func saveBarButtonItemTapped(_ sender: UIBarButtonItem) {
         
         guard let firstName = firstNameTextField.text, firstName.characters.count > 0
@@ -55,7 +64,7 @@ class PersonDetailViewController: UIViewController, UIImagePickerControllerDeleg
         }
         
         var imageData: NSData? = nil
-        if let personImage = personImageView.image {
+        if let personImage = self.image {
             imageData = UIImagePNGRepresentation(personImage) as NSData?
         }
         
@@ -81,7 +90,7 @@ class PersonDetailViewController: UIViewController, UIImagePickerControllerDeleg
     
     @IBAction func selectImageButtonTapped(_ sender: UIButton) {
         
-        print("Select Image button tapped")
+        present(imagePicker, animated: true, completion: nil)
     }
     
     //==================================================
@@ -91,6 +100,14 @@ class PersonDetailViewController: UIViewController, UIImagePickerControllerDeleg
     func updateWith(_ person: Person) {
         firstNameTextField.text = person.firstName
         lastNameTextField.text = person.lastName
+        
+        if let imageData = person.imageData {
+            
+            let image = UIImage(data: imageData as Data)
+            self.image = image
+            personImageView.image = image
+        }
+        
         if let notes = person.notes {
             notesTextView.text = notes
         }
@@ -102,12 +119,39 @@ class PersonDetailViewController: UIViewController, UIImagePickerControllerDeleg
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        imagePickerSetup()
 
         if let person = person {
             updateWith(person)
         }
     }
 
+}
+
+extension PersonDetailViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerSetup() {
+        
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+//        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+//            NSLog("Error selecting image.")
+//            return
+//        }
+//        self.image = image
+        self.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        
+        if let image = self.image {
+            personImageView.image = image
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 
