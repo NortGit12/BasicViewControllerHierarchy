@@ -25,9 +25,9 @@ public class Person: NSManagedObject {
         , lastName: String
         , imageData: NSData? = nil
         , notes: String? = nil
-        , context: NSManagedObjectContext = PersonController.moc) {
+        , context: NSManagedObjectContext = PersistenceController.moc) {
         
-        // Only get "Song" Entities
+        // Only get "Person" Entities
         guard let entity = NSEntityDescription.entity(forEntityName: "Person"
             , in: context) else { return nil }
         

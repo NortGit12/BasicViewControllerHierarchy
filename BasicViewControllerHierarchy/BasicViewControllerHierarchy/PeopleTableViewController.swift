@@ -45,7 +45,7 @@ class PeopleTableViewController: UITableViewController, NSFetchedResultsControll
             , NSSortDescriptor(key: "lastName", ascending: true)]
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: request
-            , managedObjectContext: PersonController.moc, sectionNameKeyPath: nil, cacheName: nil)
+            , managedObjectContext: PersistenceController.moc, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController?.delegate = self
         
         refreshFetchedResults()
